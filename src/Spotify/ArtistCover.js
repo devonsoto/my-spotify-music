@@ -1,0 +1,14 @@
+import React from 'react';
+
+function ArtistInfo(props) {
+  return props.loggedIn ? (
+    <div>
+      Now Playing: {props.artistName}
+      <div>
+        <img alt="Artist Album" src={props.albumArt} style={{ height: 150 }} />
+      </div>
+    </div>
+  ) : null;
+}
+
+export default ArtistInfo;
