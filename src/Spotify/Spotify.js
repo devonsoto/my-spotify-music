@@ -17,6 +17,7 @@ class Spotify extends Component {
     this.handleArtistButtonClick = this.handleArtistButtonClick.bind(this);
     const params = this.getHashParams();
     const token = params.access_token;
+    console.log(token);
     if (token) {
       spotifyApi.setAccessToken(token);
     }
@@ -46,10 +47,10 @@ class Spotify extends Component {
 
   // start right away
   componentDidMount() {
-      this.getNowPlaying()
-      this.getMyInfo()
-      this.getTopTracks()
-      this.getTopArtist()
+      // this.getNowPlaying()
+      // this.getMyInfo()
+      // this.getTopTracks()
+      // this.getTopArtist()
   }
 
   getNowPlaying = () => {
@@ -104,14 +105,12 @@ class Spotify extends Component {
   }
 
   handleArtistButtonClick = () => {
-    console.log("test")
     this.setState({ 
       showArtist: !this.state.showArtist
     });
   }
 
   handleTracksButtonClick = () => {
-    console.log("test")
     this.setState({ 
       showTracks: !this.state.showTracks
     });
