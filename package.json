@@ -4,11 +4,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.2.0",
+    "@material/button": "^0.40.1",
     "gh-pages": "^1.2.0",
+    "prettier": "^1.14.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4",
     "spotify-web-api-js": "^0.24.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,5 +25,12 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
+    "node-sass": "^4.9.3",
+    "pretty-quick": "^1.7.0",
+    "sass-loader": "^7.1.0"
   }
 }

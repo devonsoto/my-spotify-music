@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import LoggedIn from "./LogInButton";
 import ArtistInfo from "./ArtistCover";
-import UserInfo from './UserInfo';
-import TopArtist from './TopArtist';
-import TopTracks from './TopTracks';
-import TopTracksButton from './TopTracksButton';
-import TopArtistButton from './TopArtistButton';
-import './Spotify.css'
+import UserInfo from "./UserInfo";
+import TopArtist from "./TopArtist";
+import TopTracks from "./TopTracks";
+import TopTracksButton from "./TopTracksButton";
+import TopArtistButton from "./TopArtistButton";
+import "./Spotify.css";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -17,14 +17,13 @@ class Spotify extends Component {
     this.handleArtistButtonClick = this.handleArtistButtonClick.bind(this);
     const params = this.getHashParams();
     const token = params.access_token;
-    console.log(token);
     if (token) {
       spotifyApi.setAccessToken(token);
     }
     this.state = {
       loggedIn: token ? true : false,
       nowPlaying: { name: "Not Checked", albumArt: "" },
-      myInfo: { name: "", followers: "", myPage: "" },
+      myInfo: { name: "-", followers: "-", myPage: "-" },
       topArtists: [],
       TopTracks: [],
       showArtist: false,
@@ -32,7 +31,7 @@ class Spotify extends Component {
     };
     console.log("params: ", params);
   }
-  getHashParams() {
+  getHashParams = () => {
     var hashParams = {};
     var e,
       r = /([^&;=]+)=?([^&;]*)/g,
@@ -43,14 +42,14 @@ class Spotify extends Component {
       e = r.exec(q);
     }
     return hashParams;
-  }
+  };
 
   // start right away
   componentDidMount() {
-      // this.getNowPlaying()
-      // this.getMyInfo()
-      // this.getTopTracks()
-      // this.getTopArtist()
+    this.getNowPlaying();
+    this.getMyInfo();
+    this.getTopTracks();
+    this.getTopArtist();
   }
 
   getNowPlaying = () => {
@@ -62,75 +61,77 @@ class Spotify extends Component {
         }
       });
     });
-  }
+  };
 
   getMyInfo = () => {
     spotifyApi.getMe().then(response => {
-      console.log("My info:\n", response)
+      console.log("My info:\n", response);
       this.setState({
         myInfo: {
           name: response.id,
           followers: response.followers.total,
           myPage: response.href
         }
-       });
+      });
     });
-  }
+  };
 
   getTopTracks = () => {
     const options = {
-      time_range: 'short_term'
+      time_range: "short_term"
       // time_range: 'medium_term'
     };
-    spotifyApi.getMyTopTracks(options).then((response) => { 
-      console.log("top tracks:\n", response)
+    spotifyApi.getMyTopTracks(options).then(response => {
+      console.log("top tracks:\n", response);
       this.setState({
         TopTracks: [response.items]
       });
     });
-  }
+  };
 
   getTopArtist = () => {
     const options = {
-      time_range: 'short_term'
+      time_range: "short_term"
       // time_range: 'medium_term'
-
     };
-    spotifyApi.getMyTopArtists(options).then((response) => { 
-      console.log("top artist:\n", response)
-        this.setState({
-          topArtists: [response.items]
-        });
+    spotifyApi.getMyTopArtists(options).then(response => {
+      console.log("top artist:\n", response);
+      this.setState({
+        topArtists: [response.items]
+      });
     });
-  }
+  };
 
   handleArtistButtonClick = () => {
-    this.setState({ 
+    this.setState({
       showArtist: !this.state.showArtist
     });
-  }
+  };
 
   handleTracksButtonClick = () => {
-    this.setState({ 
+    this.setState({
       showTracks: !this.state.showTracks
     });
-  }
+  };
 
   render() {
     return (
       <div>
-        {this.state.loggedIn ? null : <LoggedIn />}
-
         {this.state.loggedIn ? (
           <div>
-            <UserInfo name={this.state.myInfo.name} followers={this.state.myInfo.followers}/>
+            <UserInfo
+              name={this.state.myInfo.name}
+              followers={this.state.myInfo.followers}
+            />
             <ArtistInfo
               loggedIn={this.state.loggedIn}
               artistName={this.state.nowPlaying.name}
               albumArt={this.state.nowPlaying.albumArt}
             />
           </div>
-        ) : null}
+        ) : (
+          <LoggedIn />
+        )}
 
         <div>
           {this.state.loggedIn && (
@@ -140,17 +141,29 @@ class Spotify extends Component {
           )}
         </div>
 
-
         <div className="Buttons">
-          <TopArtistButton onClick={this.handleArtistButtonClick} loggedIn={this.state.loggedIn} />
-          <TopTracksButton onClick={this.handleTracksButtonClick} loggedIn={this.state.loggedIn} />
+          <TopArtistButton
+            onClick={this.handleArtistButtonClick}
+            loggedIn={this.state.loggedIn}
+          />
+          <TopTracksButton
+            onClick={this.handleTracksButtonClick}
+            loggedIn={this.state.loggedIn}
+          />
         </div>
 
         <div>
-          <TopArtist artists={this.state.topArtists} loggedIn={this.state.loggedIn} showArtist={this.state.showArtist}/>
-          <TopTracks tracks={this.state.TopTracks} loggedIn={this.state.loggedIn} showTracks={this.state.showTracks}/>
+          <TopArtist
+            artists={this.state.topArtists}
+            loggedIn={this.state.loggedIn}
+            showArtist={this.state.showArtist}
+          />
+          <TopTracks
+            tracks={this.state.TopTracks}
+            loggedIn={this.state.loggedIn}
+            showTracks={this.state.showTracks}
+          />
         </div>
-        
       </div>
     );
   }

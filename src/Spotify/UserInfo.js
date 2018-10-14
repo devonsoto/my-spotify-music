@@ -1,14 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function UserInfo(props) {
-	return (
-		<div>
-			<div>
-				Name: {props.name}, followers: {props.followers}
-			</div>
-		</div>
-	);
-}
-
+const UserInfo = props => {
+  return (
+    <div>
+      Name: {props.name}, followers: {props.followers}
+    </div>
+  );
+};
 
 export default UserInfo;
