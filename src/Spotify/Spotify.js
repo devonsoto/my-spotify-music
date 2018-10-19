@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-import LoggedIn from "./LogInButton";
-import ArtistInfo from "./ArtistCover";
-import UserInfo from "./UserInfo";
-import TopArtist from "./TopArtist";
-import TopTracks from "./TopTracks";
-import TopTracksButton from "./TopTracksButton";
-import TopArtistButton from "./TopArtistButton";
+import LoggedIn from "./logginButton/LogInButton";
+import ArtistInfo from "./artistInfo/ArtistInfo";
+import UserInfo from "./userInfo/UserInfo";
+import TopInfoButton from './topInfoButton/TopInfoButton';
+import TopInfo from './topInfo/TopInfo';
+
 import "./Spotify.css";
 
 const spotifyApi = new SpotifyWebApi();
@@ -25,7 +24,7 @@ class Spotify extends Component {
       nowPlaying: { name: "Not Checked", albumArt: "" },
       myInfo: { name: "-", followers: "-", myPage: "-" },
       topArtists: [],
-      TopTracks: [],
+      topTracks: [],
       showArtist: false,
       showTracks: false
     };
@@ -84,7 +83,7 @@ class Spotify extends Component {
     spotifyApi.getMyTopTracks(options).then(response => {
       console.log("top tracks:\n", response);
       this.setState({
-        TopTracks: [response.items]
+        topTracks: [response.items]
       });
     });
   };
@@ -114,6 +113,13 @@ class Spotify extends Component {
     });
   };
 
+  handleLogIn = () => {
+    console.log("test")
+    this.setState ({
+      loggedIn: true
+    });
+  };
+
   render() {
     return (
       <div>
@@ -130,7 +136,7 @@ class Spotify extends Component {
             />
           </div>
         ) : (
-          <LoggedIn />
+          <LoggedIn onClick={this.handleLogIn}/>
         )}
 
         <div>
@@ -142,26 +148,28 @@ class Spotify extends Component {
         </div>
 
         <div className="Buttons">
-          <TopArtistButton
+          <TopInfoButton
             onClick={this.handleArtistButtonClick}
             loggedIn={this.state.loggedIn}
+            name="Show Top Artist"
           />
-          <TopTracksButton
+          <TopInfoButton
             onClick={this.handleTracksButtonClick}
             loggedIn={this.state.loggedIn}
+            name="Show Top Songs"
           />
         </div>
 
         <div>
-          <TopArtist
-            artists={this.state.topArtists}
+          <TopInfo
+            info={this.state.topArtists}
             loggedIn={this.state.loggedIn}
-            showArtist={this.state.showArtist}
+            showInfo={this.state.showArtist}
           />
-          <TopTracks
-            tracks={this.state.TopTracks}
+          <TopInfo
+            info={this.state.topTracks}
             loggedIn={this.state.loggedIn}
-            showTracks={this.state.showTracks}
+            showInfo={this.state.showTracks}
           />
         </div>
       </div>

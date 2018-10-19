@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ArtistInfo(props) {
+const ArtistInfo = props => {
   return props.loggedIn ? (
     <div>
       Now Playing: {props.artistName}
