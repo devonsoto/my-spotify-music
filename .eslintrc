@@ -4,6 +4,10 @@
     "react"
   ],
   "rules": {
-    "no-undef": [ 1 ]
+    "no-undef": [ 1 ],
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "allowJs": true
+    }
   }
 }

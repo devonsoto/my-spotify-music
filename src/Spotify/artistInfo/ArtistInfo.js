@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const ArtistInfo = props => {
   return props.loggedIn ? (
@@ -9,6 +9,6 @@ const ArtistInfo = props => {
       </div>
     </div>
   ) : null;
-}
+};
 
 export default ArtistInfo;

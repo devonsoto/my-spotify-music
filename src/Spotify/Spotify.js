@@ -3,8 +3,8 @@ import SpotifyWebApi from "spotify-web-api-js";
 import LoggedIn from "./logginButton/LogInButton";
 import ArtistInfo from "./artistInfo/ArtistInfo";
 import UserInfo from "./userInfo/UserInfo";
-import TopInfoButton from './topInfoButton/TopInfoButton';
-import TopInfo from './topInfo/TopInfo';
+import TopInfoButton from "./topInfoButton/TopInfoButton";
+import TopInfo from "./topInfo/TopInfo";
 
 import "./Spotify.css";
 
@@ -114,8 +114,8 @@ class Spotify extends Component {
   };
 
   handleLogIn = () => {
-    console.log("test")
-    this.setState ({
+    console.log("test");
+    this.setState({
       loggedIn: true
     });
   };
@@ -136,7 +136,7 @@ class Spotify extends Component {
             />
           </div>
         ) : (
-          <LoggedIn onClick={this.handleLogIn}/>
+          <LoggedIn onClick={this.handleLogIn} />
         )}
 
         <div>
@@ -147,7 +147,7 @@ class Spotify extends Component {
           )}
         </div>
 
-        <div className="Buttons">
+        <div>
           <TopInfoButton
             onClick={this.handleArtistButtonClick}
             loggedIn={this.state.loggedIn}

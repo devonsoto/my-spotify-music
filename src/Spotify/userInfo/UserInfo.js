@@ -1,12 +1,10 @@
 import React from "react";
 
-console.log("test1");
-
+import "./Userinfo.less";
 
 const UserInfo = props => {
-  console.log('test') 
   return (
-    <div>
+    <div className="Userinfo">
       Name: {props.name}, followers: {props.followers}
     </div>
   );
