@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import ArtistInfo from "./artistInfo/ArtistInfo";
-import LoggedIn from "./logginButton/LogInButton";
 import PillButton from "../Components/PillButton";
 import TopInfo from "./topInfo/TopInfo";
-import TopInfoButton from "./topInfoButton/TopInfoButton";
 import UserInfo from "./userInfo/UserInfo";
 
 const spotifyApi = new SpotifyWebApi();
@@ -27,7 +25,6 @@ class Spotify extends Component {
       showArtist: false,
       showTracks: false
     };
-    console.log("params: ", params);
   }
   getHashParams = () => {
     var hashParams = {};
@@ -63,7 +60,6 @@ class Spotify extends Component {
 
   getMyInfo = () => {
     spotifyApi.getMe().then(response => {
-      console.log("My info:\n", response);
       this.setState({
         myInfo: {
           name: response.id,
@@ -80,7 +76,6 @@ class Spotify extends Component {
       // time_range: 'medium_term'
     };
     spotifyApi.getMyTopTracks(options).then(response => {
-      console.log("top tracks:\n", response);
       this.setState({
         topTracks: [response.items]
       });
@@ -93,7 +88,6 @@ class Spotify extends Component {
       // time_range: 'medium_term'
     };
     spotifyApi.getMyTopArtists(options).then(response => {
-      console.log("top artist:\n", response);
       this.setState({
         topArtists: [response.items]
       });
@@ -113,7 +107,6 @@ class Spotify extends Component {
   };
 
   handleLogIn = () => {
-    console.log("test");
     this.setState({
       loggedIn: true
     });
