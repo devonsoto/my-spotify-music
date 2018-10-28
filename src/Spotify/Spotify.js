@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-import LoggedIn from "./logginButton/LogInButton";
 import ArtistInfo from "./artistInfo/ArtistInfo";
-import UserInfo from "./userInfo/UserInfo";
-import TopInfoButton from "./topInfoButton/TopInfoButton";
+import LoggedIn from "./logginButton/LogInButton";
+import PillButton from "../Components/PillButton";
 import TopInfo from "./topInfo/TopInfo";
-
-import "./Spotify.css";
+import TopInfoButton from "./topInfoButton/TopInfoButton";
+import UserInfo from "./userInfo/UserInfo";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -136,25 +135,34 @@ class Spotify extends Component {
             />
           </div>
         ) : (
-          <LoggedIn onClick={this.handleLogIn} />
+          <PillButton
+            onClick={this.handleLogIn}
+            loggedIn={true}
+            name="Log into Spotify"
+            color="primary"
+            href="http://localhost:8888"
+          />
         )}
 
         <div>
-          {this.state.loggedIn && (
-            <button onClick={() => this.getNowPlaying()}>
-              Check Now Playing
-            </button>
-          )}
+          <PillButton
+            name="Check Now Playing"
+            color="secondary"
+            onClick={this.getNowPlaying}
+            loggedIn={this.state.loggedIn}
+          />
         </div>
 
         <div>
-          <TopInfoButton
+          <PillButton
             onClick={this.handleArtistButtonClick}
+            color="secondary"
             loggedIn={this.state.loggedIn}
             name="Show Top Artist"
           />
-          <TopInfoButton
+          <PillButton
             onClick={this.handleTracksButtonClick}
+            color="secondary"
             loggedIn={this.state.loggedIn}
             name="Show Top Songs"
           />
