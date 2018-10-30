@@ -4,6 +4,7 @@ import ArtistInfo from "./artistInfo/ArtistInfo";
 import PillButton from "../Components/PillButton";
 import TopInfo from "./topInfo/TopInfo";
 import UserInfo from "./userInfo/UserInfo";
+import MediaCard from "../Components/MediaCard";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -96,13 +97,15 @@ class Spotify extends Component {
 
   handleArtistButtonClick = () => {
     this.setState({
-      showArtist: !this.state.showArtist
+      showArtist: !this.state.showArtist,
+      showTracks: false
     });
   };
 
   handleTracksButtonClick = () => {
     this.setState({
-      showTracks: !this.state.showTracks
+      showTracks: !this.state.showTracks,
+      showArtist: false
     });
   };
 
@@ -164,13 +167,13 @@ class Spotify extends Component {
         <div>
           <TopInfo
             info={this.state.topArtists}
-            loggedIn={this.state.loggedIn}
             showInfo={this.state.showArtist}
+            type="artist"
           />
           <TopInfo
             info={this.state.topTracks}
-            loggedIn={this.state.loggedIn}
             showInfo={this.state.showTracks}
+            type="tracks"
           />
         </div>
       </div>

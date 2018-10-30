@@ -1,5 +1,9 @@
 # my-spotify-music
 
+## Current progress
+
+<img src="./src/assests/10.30.2018.gif">
+
 ## How to Start
 
 1. clone the repo
