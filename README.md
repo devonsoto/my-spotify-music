@@ -2,7 +2,7 @@
 
 ## Current progress
 
-<img src="src/assets/10.30.2018-4.gif" width="200" height="200" >
+<img src="src/assets/10.30.2018.gif" width="200" height="200" >
 
 ## How to Start
 
