@@ -4,7 +4,7 @@ import ArtistInfo from "./artistInfo/ArtistInfo";
 import PillButton from "../Components/PillButton";
 import TopInfo from "./topInfo/TopInfo";
 import UserInfo from "./userInfo/UserInfo";
-import MediaCard from "../Components/MediaCard";
+import Header from "..//Components/Header/Header";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -131,13 +131,9 @@ class Spotify extends Component {
             />
           </div>
         ) : (
-          <PillButton
-            onClick={this.handleLogIn}
-            loggedIn={true}
-            name="Log into Spotify"
-            color="primary"
-            href="http://localhost:8888"
-          />
+          <div>
+            <Header onClick={this.handleLogIn} />
+          </div>
         )}
 
         <div>
