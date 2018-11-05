@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MediaCard from "../../Components/MediaCard";
+import MediaCard from "../../Components/MediaCard/MediaCard";
 
 const TopInfo = props => {
   const { showInfo, info, type } = props;

@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./ArtistInfo.less";
+
 const ArtistInfo = props => {
   const { loggedIn, artistName, albumArt } = props;
+
   return loggedIn ? (
-    <div>
+    <div className="ArtistInfo-text">
       Now Playing: {artistName}
       <div>
-        <img alt="Artist Album" src={albumArt} style={{ height: 150 }} />
+        <img className="ArtistInfo-img" alt="Artist Album" src={albumArt} />
       </div>
     </div>
   ) : null;

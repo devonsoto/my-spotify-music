@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import ArtistInfo from "./artistInfo/ArtistInfo";
-import PillButton from "../Components/PillButton";
+import PillButton from "../Components/PillButton/PillButton";
 import TopInfo from "./topInfo/TopInfo";
 import UserInfo from "./userInfo/UserInfo";
-import Header from "..//Components/Header/Header";
+import LogInScreen from "../Components/LogInScreen/LogInScreen";
+import Header from "../Components/Header/Header";
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -120,6 +121,7 @@ class Spotify extends Component {
       <div>
         {this.state.loggedIn ? (
           <div>
+            <Header />
             <UserInfo
               name={this.state.myInfo.name}
               followers={this.state.myInfo.followers}
@@ -132,7 +134,7 @@ class Spotify extends Component {
           </div>
         ) : (
           <div>
-            <Header onClick={this.handleLogIn} />
+            <LogInScreen onClick={this.handleLogIn} />
           </div>
         )}
 
