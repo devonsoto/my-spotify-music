@@ -7,6 +7,8 @@ import UserInfo from "./userInfo/UserInfo";
 import LogInScreen from "../Components/LogInScreen/LogInScreen";
 import Header from "../Components/Header/Header";
 
+import "./Spotify.less";
+
 const spotifyApi = new SpotifyWebApi();
 
 class Spotify extends Component {
@@ -138,7 +140,7 @@ class Spotify extends Component {
           </div>
         )}
 
-        <div>
+        <div className="Show-Top-Btn">
           <PillButton
             name="Check Now Playing"
             color="secondary"
@@ -147,7 +149,7 @@ class Spotify extends Component {
           />
         </div>
 
-        <div>
+        <div className="Show-Top-Btn">
           <PillButton
             onClick={this.handleArtistButtonClick}
             color="secondary"

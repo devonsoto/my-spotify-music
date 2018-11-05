@@ -13,7 +13,8 @@ import SkipNextIcon from "@material-ui/icons/SkipNext";
 const styles = theme => ({
   card: {
     maxWidth: 500,
-    display: "flex"
+    display: "flex",
+    margin: 10
   },
   details: {
     display: "flex",

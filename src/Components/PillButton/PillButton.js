@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 
+import "./PillButton.less";
+
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
+    zIndex: 0
   }
 });
 
@@ -13,15 +16,17 @@ const PillButton = props => {
   const { classes, name, loggedIn, onClick, color, href } = props;
 
   return loggedIn ? (
-    <Button
-      variant="contained"
-      color={color}
-      onClick={onClick}
-      className={classes.button}
-      href={href}
-    >
-      {name}
-    </Button>
+    <div className="PillButton">
+      <Button
+        variant="contained"
+        color={color}
+        onClick={onClick}
+        className={classes.button}
+        href={href}
+      >
+        {name}
+      </Button>
+    </div>
   ) : null;
 };
 
