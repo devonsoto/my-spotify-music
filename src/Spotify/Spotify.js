@@ -123,7 +123,7 @@ class Spotify extends Component {
       <div>
         {this.state.loggedIn ? (
           <div>
-            <Header />
+            <Header loggedIn={this.state.loggedIn} />
             <UserInfo
               name={this.state.myInfo.name}
               followers={this.state.myInfo.followers}
