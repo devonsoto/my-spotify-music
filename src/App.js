@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Spotify from "./Spotify/Spotify";
+import Spotify from "./Components/Spotify/Spotify";
 
 import "./App.less";
 

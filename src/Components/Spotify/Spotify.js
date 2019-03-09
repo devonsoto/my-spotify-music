@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-import ArtistInfo from "./artistInfo/ArtistInfo";
-import PillButton from "../Components/PillButton/PillButton";
-import TopInfo from "./topInfo/TopInfo";
-import UserInfo from "./userInfo/UserInfo";
-import LogInScreen from "../Components/LogInScreen/LogInScreen";
-import Header from "../Components/Header/Header";
+import ArtistInfo from "../artistInfo/ArtistInfo";
+import PillButton from "../PillButton/PillButton";
+import TopInfo from "../topInfo/TopInfo";
+import UserInfo from "../userInfo/UserInfo";
+import LogInScreen from "../LogInScreen/LogInScreen";
+import Header from "../Header/Header";
 
 import "./Spotify.less";
 

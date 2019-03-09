@@ -12,7 +12,7 @@ var request = require("request"); // "Request" library
 var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
-var CONFIG = require("../../../../../config.js");
+var CONFIG = require("../../../../config");
 
 var client_id = CONFIG.MY_CLIENT_ID; // Your client id
 var client_secret = CONFIG.SECRET_KEY; // Your secret
